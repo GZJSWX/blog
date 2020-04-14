@@ -1,11 +1,9 @@
 package com.wangxin.blog.config;
 
-import com.wangxin.blog.component.LoginHandlerInterceptor;
+import com.wangxin.blog.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.format.FormatterRegistry;
+import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 public class MyMvcController implements WebMvcConfigurer {
@@ -30,5 +28,16 @@ public class MyMvcController implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+    }
+
+    /**
+     * 登录拦截器
+     * @param registry
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns("/admin/**")
+                .excludePathPatterns("/admin","/admin/login");
     }
 }
