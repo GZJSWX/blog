@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
 <html lang="en" xmlns:th="http:www.thymeleaf.org">
-<head th:replace="admin/_fragments :: head(~{::title})">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>标签新增</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-  <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
-  <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
-</head>
+<th:block th:replace="admin/_fragments :: head('新增标签')" />
 <body>
 
   <!--导航-->

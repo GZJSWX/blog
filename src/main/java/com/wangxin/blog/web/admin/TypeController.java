@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -88,6 +87,13 @@ public class TypeController {
         }else{
             attributes.addFlashAttribute("message","更新成功");
         }
+        return "redirect:/admin/types";
+    }
+
+    @GetMapping("/types/{id}/delete")
+    public String delete(@PathVariable Integer id,RedirectAttributes attributes){
+        typeService.deleteType(id);
+        attributes.addFlashAttribute("message","删除成功");
         return "redirect:/admin/types";
     }
 }

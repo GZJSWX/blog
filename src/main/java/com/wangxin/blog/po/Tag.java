@@ -1,6 +1,7 @@
 package com.wangxin.blog.po;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,8 @@ public class Tag {
     @Id
     @GeneratedValue
     private Integer id;
+
+    @NotBlank(message = "标签名称不能为空")
     private String name;
 
     //blog与tag是多对多的关系
